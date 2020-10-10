@@ -1,5 +1,5 @@
 from flask import request
-from flask_accepts import accepts, responds
+from flask_accepts import accepts
 from flask_restx import Namespace, Resource
 import json
 

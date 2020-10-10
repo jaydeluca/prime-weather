@@ -1,4 +1,3 @@
-
 def register_routes(api, app, root="api"):
     from .controller import api as prime_api
 

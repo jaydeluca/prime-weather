@@ -15,12 +15,12 @@ class BaseConfig:
 class DevConfig(BaseConfig):
     CONFIG_NAME = "dev"
     DEBUG = True
-    API_KEY = os.getenv("DEV_SECRET_KEY")
+    API_KEY = os.getenv("DEV_API_KEY")
 
 
 class TestConfig(BaseConfig):
     CONFIG_NAME = "test"
-    API_KEY = os.getenv("TEST_SECRET_KEY")
+    API_KEY = os.getenv("TEST_API_KEY")
 
 
 EXPORT_CONFIGS: List[Type[BaseConfig]] = [

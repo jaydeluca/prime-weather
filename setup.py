@@ -12,6 +12,7 @@ setup(
         'python-dotenv',
         'marshmallow==3.2.0',
         'flask-accepts==0.17.0',
+        'requests'
     ],
     extras_require={"dotenv": ["python-dotenv"]},
 )
