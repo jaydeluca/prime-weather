@@ -12,7 +12,9 @@ setup(
         'python-dotenv',
         'marshmallow==3.2.0',
         'flask-accepts==0.17.0',
-        'requests'
+        'requests',
+        'json_logging',
+        'elastic-apm[flask]'
     ],
     extras_require={"dotenv": ["python-dotenv"]},
 )

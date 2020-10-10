@@ -1,4 +1,5 @@
 import requests
+from flask import current_app
 
 
 class WeatherClient:
@@ -12,11 +13,14 @@ class WeatherClient:
 
     def get_weather(self, zipcode):
         """
+        Get Weather
+        @TODO: add caching (15 minute ttl?) by #zipcode to avoid excess external calls
         https://openweathermap.org/current#zip
         :param zipcode:
-        :return:
+        :return: json of current weather
         """
         request = requests.get(self.get_path(zipcode))
+        current_app.logger.info("Call to external api response code: " + str(request.status_code))
         return request.json()
 
     def get_path(self, zipcode):

@@ -10,6 +10,8 @@ class BaseConfig:
 
     CONFIG_NAME = "base"
     DEBUG = False
+    SERVICE_NAME = os.getenv("SERVICE_NAME")
+    SECRET_TOKEN = os.getenv("SECRET_TOKEN")
 
 
 class DevConfig(BaseConfig):

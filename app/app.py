@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, render_template
-import logging, sys
+import logging, sys, json_logging
 import pkg_resources
+from elasticapm.contrib.flask import ElasticAPM
 
 from flask_restx import Api
 
@@ -17,10 +18,18 @@ def create_app(env=None):
 
     app = Flask(__name__)
     app.config.from_object(config_by_name[env or "test"])
-    register_errorhandlers(app)
-    configure_logger(app)
+
     api = Api(app, title=__name__, version=app_version)
     register_routes(api, app)
+
+    # Telemetry
+    app.config['ELASTIC_APM'] = {
+        'SERVICE_NAME': app.config["SERVICE_NAME"],
+        'SECRET_TOKEN': app.config["SECRET_TOKEN"],
+    }
+    apm = ElasticAPM(app)
+    register_errorhandlers(app)
+    configure_logger(app)
 
     @app.route("/health")
     def health():
@@ -31,11 +40,15 @@ def create_app(env=None):
         return jsonify({"version": app_version})
 
     register_routes(api, app)
+
     return app
 
 
 def configure_logger(app):
     """Configure loggers."""
+    json_logging.init_flask(enable_json=True)
+    json_logging.init_request_instrument(app)
+
     handler = logging.StreamHandler(sys.stdout)
     if not app.logger.handlers:
         app.logger.addHandler(handler)
