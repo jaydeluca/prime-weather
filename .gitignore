@@ -1,0 +1,10 @@
+# Local Things
+venv/
+.idea
+env/
+*.egg-info/
+*.pyc
+__pycache__/
+
+# Configuration
+.env
