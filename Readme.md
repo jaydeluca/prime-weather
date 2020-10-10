@@ -1,13 +1,21 @@
 # Kyruus Interview Exercise
 * Python 3 Flask API
 
+
 ## Setup
-Manually Running the App
+#### Manually Running the App
 ```
 python3 -m venv env
 source env/bin/activate
 pip install -e .
 python wsgi.py
+```
+Access the App via: http://127.0.0.1:5000/ 
+
+#### Docker
+Build and Run the app via a docker container:
+```
+docker-compose up -d
 ```
 Access the App via: http://127.0.0.1:5000/ 
 
