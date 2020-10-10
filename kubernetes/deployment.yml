@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prime-weather-service
+spec:
+  selector:
+    app: prime-weather
+  ports:
+    - protocol: "TCP"
+      port: 5000
+      targetPort: 5000
+      nodePort: 30003
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prime-weather
+spec:
+  selector:
+    matchLabels:
+      app: prime-weather
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: prime-weather
+    spec:
+      containers:
+        - name: prime-weather
+          image: prime-weather:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+
+    

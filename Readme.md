@@ -3,8 +3,15 @@
 
 
 ## Setup
-#### Manually Running the App
+#### Environment Variables
+You will need an api key for [OpenWeather](https://home.openweathermap.org/api_keys)
+```bash
+# Copy and then Populate the .env file
+cp example.env .env
 ```
+
+#### Manually Running the App
+```bash
 python3 -m venv env
 source env/bin/activate
 pip install -e .
@@ -14,11 +21,21 @@ Access the App via: http://127.0.0.1:5000/
 
 #### Docker
 Build and Run the app via a docker container:
-```
+```bash
 docker-compose up -d
 ```
 Access the App via: http://127.0.0.1:5000/ 
 
+#### Kubernetes
+```bash
+kubectl apply -f kubernetes/deployment.yml
+```
+
+#### Minikube
+There is an included script to build image, bootstrap a minikube cluster, deploy the app, and setup port forwarding for port 5000
+```bash
+./minikube-startup.sh
+```
 
 ## API
 Endpoints:
