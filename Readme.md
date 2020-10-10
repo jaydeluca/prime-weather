@@ -17,8 +17,8 @@ Endpoints:
 
 * [GET] /version
     * Return a JSON dictionary with the version of the application.
-* [POST] /is_prime 
+* [POST] /api/is_prime 
     * Takes a number and returns true if the provided number is prime or false if not prime.
-* [POST] /weather 
+* [POST] /api/weather 
     * Takes a US zipcode and returns the current weather. 
     
