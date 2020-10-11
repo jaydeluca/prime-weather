@@ -48,7 +48,7 @@ eval $(minikube docker-env)
 ```
 
 #### Helper Scripts
-```
+```bash
 # Build docker container
 ./docker-build.sh
 
@@ -69,7 +69,7 @@ An API Key is required to access certain endpoints. This key should be passed in
 header name of "apiKey". This key is configurable via an Environment Variable "API_KEY". 
   
 Example Request:
-```
+```bash
 curl --request POST \
   --url http://localhost:5000/api/weather \
   --header 'apikey: xqkJUQ2ykcjK' \
@@ -80,7 +80,7 @@ curl --request POST \
 ```
 
 Endpoints can be secured via a decorator @require_apikey:
-```
+```python
 from ..security import require_apikey
 
 @api.route("/weather")
@@ -106,7 +106,7 @@ Takes a number and returns true if the provided number is prime or false if not 
 Takes a US zipcode and returns the current weather.
 
 Example Response:
-```
+```json
 {
   "coord": {
     "lon": -71.32,
