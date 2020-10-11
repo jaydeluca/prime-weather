@@ -1,6 +1,14 @@
-# Kyruus Interview Exercise
-* Python 3 Flask API
-
+# Prime Weather API Exercise
+## Context
+Sample app deployed on containers in kubernetes.
+* Python 3 Flask REST API
+* Docker and docker-compose configs included
+* Kubernetes charts for fluentd, Elasticsearch & Kibana integration for logs
+* Various helper scripts for minikube and other local development
+* Integration with External OpenWeather API
+* Request Header API Key Authorization
+* (@TODO / WIP) Elastic APM integration
+* (@TODO / WIP) Caching for external API calls
 
 ## Setup
 #### Environment Variables
@@ -18,14 +26,14 @@ pip install -e .
 export FLASK_ENV=dev
 python wsgi.py
 ```
-Access the App via: http://127.0.0.1:5000/ 
+Access the App via: http://localhost:5000/health
 
 #### Docker
 Build and Run the app via a docker container:
 ```bash
 docker-compose up -d
 ```
-Access the App via: http://127.0.0.1:5000/ 
+Access the App via: http://localhost:5000/health
 
 #### Kubernetes
 ```bash
@@ -38,16 +46,22 @@ There is an included script to build image, setup elasticsearch, and deploy the 
 eval $(minikube docker-env)
 ./minikube-startup.sh
 ```
-Port forward the api to allow access on http://localhost:5000
-```
-./scripts/minikube-open-api.sh
-```
 
-Port forward Kibana to allow access on http://localhost:5601
+#### Helper Scripts
 ```
+# Build docker container
+./docker-build.sh
+
+# Minikube startup (apply all charts)
+./minikube-startup.sh
+
+#### Minikube Temporary Workaround Scripts ####
+# Port forward the api to allow access on http://localhost:5000
+./scripts/minikube-open-api.sh
+
+# Port forward Kibana to allow access on http://localhost:5601
 ./scripts/minikube-open-kibana.sh
 ```
-
 
 ## API
 ### Security
@@ -76,6 +90,7 @@ class PrimeResource(Resource):
 ```
 
 ### Endpoints:
+**Note:** When app is running, visit http://localhost:5000/ for full swagger docs
 
 #### [GET] /health
 Return a JSON dictionary with the name and version of the application.
