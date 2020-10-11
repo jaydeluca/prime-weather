@@ -7,8 +7,9 @@ Sample app deployed on containers in kubernetes.
 * Various helper scripts for minikube and other local development
 * Integration with External OpenWeather API
 * Request Header API Key Authorization
-* (@TODO / WIP) Elastic APM integration
-* (@TODO / WIP) Caching for external API calls
+* (@TODO) Input Validation and better error handling within application
+* (@TODO) Elastic APM integration
+* (@TODO) Caching for external API calls
 
 ## Setup
 #### Environment Variables

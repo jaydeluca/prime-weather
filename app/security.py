@@ -4,7 +4,7 @@ from flask import current_app
 
 
 def require_apikey(view_function):
-    """Decorate for requiring API key"""
+    """Decorator for requiring API key"""
     @wraps(view_function)
     def wrapper(*args, **kwargs):
         if request.headers.get('apiKey') and request.headers.get('apiKey') == current_app.config.get('API_KEY'):
