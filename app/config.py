@@ -12,17 +12,19 @@ class BaseConfig:
     DEBUG = False
     SERVICE_NAME = os.getenv("SERVICE_NAME")
     SECRET_TOKEN = os.getenv("SECRET_TOKEN")
+    API_KEY = os.getenv("API_KEY")
+    JSON_LOGGING = os.getenv("JSON_LOGGING") if os.getenv("JSON_LOGGING") is not None else False
 
 
 class DevConfig(BaseConfig):
     CONFIG_NAME = "dev"
     DEBUG = True
-    API_KEY = os.getenv("DEV_API_KEY")
+    WEATHER_API_KEY = os.getenv("DEV_WEATHER_API_KEY")
 
 
 class TestConfig(BaseConfig):
     CONFIG_NAME = "test"
-    API_KEY = os.getenv("TEST_API_KEY")
+    WEATHER_API_KEY = os.getenv("TEST_WEATHER_API_KEY")
 
 
 EXPORT_CONFIGS: List[Type[BaseConfig]] = [

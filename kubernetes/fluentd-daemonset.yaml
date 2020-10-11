@@ -48,6 +48,9 @@ spec:
         - name: varlibdockercontainers
           mountPath: /var/lib/docker/containers
           readOnly: true
+        - name: journal
+          mountPath: /var/log/journal
+          readOnly: true
       terminationGracePeriodSeconds: 30
       volumes:
       - name: varlog
@@ -56,3 +59,6 @@ spec:
       - name: varlibdockercontainers
         hostPath:
           path: /var/lib/docker/containers
+      - name: journal
+        hostPath:
+            path: /run/log/journal

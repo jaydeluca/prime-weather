@@ -50,7 +50,32 @@ Port forward Kibana to allow access on http://localhost:5601
 
 
 ## API
-Endpoints:
+### Security
+An API Key is required to access certain endpoints. This key should be passed in via a request header with the 
+header name of "apiKey". This key is configurable via an Environment Variable "API_KEY". 
+  
+Example Request:
+```
+curl --request POST \
+  --url http://localhost:5000/api/weather \
+  --header 'apikey: xqkJUQ2ykcjK' \
+  --header 'content-type: application/json' \
+  --data '{
+	"zipcode": "02771"
+}'
+```
+
+Endpoints can be secured via a decorator @require_apikey:
+```
+from ..security import require_apikey
+
+@api.route("/weather")
+class PrimeResource(Resource):
+    @require_apikey
+    def post(self):
+```
+
+### Endpoints:
 
 #### [GET] /health
 Return a JSON dictionary with the name and version of the application.
@@ -61,7 +86,8 @@ Return a JSON dictionary with the version of the application.
 #### [POST] /api/is_prime 
 Takes a number and returns true if the provided number is prime or false if not prime.
 
-#### [POST] /api/weather 
+#### [POST] /api/weather
+**API Key Required**  
 Takes a US zipcode and returns the current weather.
 
 Example Response:
