@@ -66,6 +66,9 @@ eval $(minikube docker-env)
 
 # Port forward Kibana to allow access on http://localhost:5601
 ./scripts/minikube-open-kibana.sh
+
+# Load testing script (does not hit weather endpoint)
+python ./scripts/load-test.py
 ```
 
 ## API
