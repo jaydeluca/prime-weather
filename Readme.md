@@ -8,6 +8,10 @@ Sample app deployed on containers in kubernetes.
 * Integration with External OpenWeather API
 * Request Header API Key Authorization
 * (@TODO) Input Validation and better error handling within application
+* (@TODO) Unit tests for services
+* (@TODO) Integration Tests for secured endpoints
+* (@TODO) Kubernetes Service Healthcheck
+* (@TODO) Load test script
 * (@TODO) Elastic APM integration
 * (@TODO) Caching for external API calls
 
