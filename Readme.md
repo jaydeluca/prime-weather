@@ -11,8 +11,8 @@ Sample app deployed on containers in kubernetes.
 * (@TODO) Unit tests for services
 * (@TODO) Integration Tests for secured endpoints
 * (@TODO) Kubernetes Service Healthcheck
-* (@TODO) Load test script
-* (@TODO) Elastic APM integration
+* (@TODO) Dockerize the Load test script
+* (@TODO) Elastic APM / Prometheus integration
 * (@TODO) Caching for external API calls
 
 ## Setup
