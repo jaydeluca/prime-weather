@@ -1,4 +1,4 @@
-FROM python:3.6.1-alpine
+FROM python:3.9.7-alpine3.14
 WORKDIR /app
 ENV FLASK_ENV=dev
 ENV JSON_LOGGING=true

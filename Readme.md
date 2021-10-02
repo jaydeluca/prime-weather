@@ -50,6 +50,14 @@ There is an included script to build image, setup elasticsearch, and deploy the 
 ```bash
 eval $(minikube docker-env)
 ./minikube-startup.sh
+
+# Get URL for app
+minikube service kibana -n logging --url
+minikube service prime-weather-service
+
+# Get URL for kibana
+minikube service kibana -n logging --url
+
 ```
 
 #### Helper Scripts
